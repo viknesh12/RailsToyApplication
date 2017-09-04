@@ -4,12 +4,11 @@ class SessionsController < ApplicationController
   
   def create
     user = User.find_by(email: params[:session][:email])
-    if !user.nil? && user.authenticate(params[:session][:password])
+    if user && user.authenticate(params[:session][:password])
       #success scenario
       log_in user
-      current_user
       remember user
-      redirect_to user_url(user)
+      redirect_back_or user
     else
       #failure scenario - some one is trying to login into system
       redirect_to :action => "create"

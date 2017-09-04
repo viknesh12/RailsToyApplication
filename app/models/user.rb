@@ -2,6 +2,7 @@ class User < ApplicationRecord
     validates :name , presence: true, length: {maximum: 50}, uniqueness: true
     validates :email , presence: true  
     has_secure_password
+    validates :password , length: {minimum: 6} , allow_blank: true
 
     attr_accessor :remember_token
 
@@ -20,6 +21,6 @@ class User < ApplicationRecord
     end	
 
     def authenticated?(remember_token)
-        BCrypt::Password.new(remember_digest) == remember_token
+        BCrypt::Password.new(remember_digest).is_password?(remember_token)
     end     
 end
