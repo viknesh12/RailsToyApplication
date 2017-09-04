@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
       #success scenario
       log_in user
       current_user
+      remember user
       redirect_to user_url(user)
     else
       #failure scenario - some one is trying to login into system
