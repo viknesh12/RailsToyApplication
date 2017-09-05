@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+    has_many :microposts
     validates :name , presence: true, length: {maximum: 50}, uniqueness: true
     validates :email , presence: true  
     has_secure_password
