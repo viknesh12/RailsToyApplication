@@ -18,6 +18,6 @@ Rails.application.routes.draw do
   resources :users
   resources :address
 
-  resources :microposts, only: [:create, :destroy]
+  resources :microposts, only: [:create, :destroy, :update]
   
 end

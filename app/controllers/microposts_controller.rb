@@ -13,6 +13,15 @@ class MicropostsController < ApplicationController
     def destroy
     end
 
+    def update
+        @micropost = Micropost.find(params[:id])
+        if @micropost.update_attributes(microppst_params)
+        else
+            flash[:alert] = "Error when updating Micropost"
+        end 
+        redirect_to current_user
+    end
+
     private 
     def microppst_params
     params.require(:micropost).permit(:content)

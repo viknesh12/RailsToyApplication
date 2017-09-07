@@ -19,6 +19,12 @@ class UsersController < ApplicationController
     @user = User.find params[:id]
     @microposts = @user.microposts.paginate(page: params[:page])
   end
+
+  def summary
+    # only by admin user
+    # for each user id  - show number of microposts
+    
+  end
   
   def create
    @user = User.new(user_params)
